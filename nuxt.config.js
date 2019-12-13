@@ -103,7 +103,7 @@ export default {
     meta: {
       ogHost: process.env.BASE_URL || 'http://localhost:3000',
       ogImage: {
-        path: '/og-image',
+        path: '/og-image.png',
         width: '1200',
         height: '630',
         type: 'image/png'
