@@ -17,9 +17,6 @@ export default {
     return {
       chartdata: {
         labels: this.labels,
-        dataLabels: {
-          display: false
-        },
         datasets: [
           {
             label: 'Daily active users',
@@ -37,11 +34,6 @@ export default {
           position: 'bottom',
           labels: {
             boxWidth: 12
-          }
-        },
-        elements: {
-          point: {
-            radius: 0
           }
         },
         scales: {
