@@ -17,53 +17,27 @@
         </div>
       </div>
       <div class="d-flex pt-2">
-        <v-btn text icon>
-          <v-icon>mdi-decagram</v-icon>
-        </v-btn>
-        <v-btn text icon>
-          <v-icon>mdi-share</v-icon>
-        </v-btn>
-        <v-btn text icon>
-          <v-icon>mdi-dots-vertical</v-icon>
+        <v-btn
+          v-for="{ icon, label } in topButtons"
+          :key="icon"
+          :aria-label="label"
+          text
+          icon
+        >
+          <v-icon>{{ icon }}</v-icon>
         </v-btn>
       </div>
     </div>
-    <!-- <v-sparkline
-      :show-labels="false"
-      :labels="chartLabels"
-      :value="chartValues"
-      :gradient="gradient"
-      label-size="5"
-      color="accent"
-      fill
-      smooth
-    ></v-sparkline>
-    <p class="text-center">
-      <v-avatar size="16" tile color="primary"></v-avatar>
-      Daily active users
-    </p> -->
     <Chart :labels="chartLabels" :data="chartValues" class="chart" />
 
-    <v-btn text icon>
-      <v-icon>mdi-send</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-update</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-cellphone-iphone</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-account-group</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-settings</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-chart-areaspline-variant</v-icon>
-    </v-btn>
-    <v-btn text icon>
-      <v-icon>mdi-twitter</v-icon>
+    <v-btn
+      v-for="{ icon, label } in bottomButtons"
+      :key="icon"
+      :aria-label="label"
+      text
+      icon
+    >
+      <v-icon>{{ icon }}</v-icon>
     </v-btn>
   </v-card>
 </template>
@@ -81,7 +55,50 @@ export default {
     }
   },
   data: () => ({
-    gradient: ['#009688', '#009688']
+    topButtons: [
+      {
+        icon: 'mdi-decagram',
+        label: 'star app'
+      },
+      {
+        icon: 'mdi-share',
+        label: 'share app'
+      },
+      {
+        icon: 'mdi-dots-vertical',
+        label: 'more options'
+      }
+    ],
+    bottomButtons: [
+      {
+        icon: 'mdi-send',
+        label: 'send notification'
+      },
+      {
+        icon: 'mdi-update',
+        label: 'update app'
+      },
+      {
+        icon: 'mdi-cellphone-iphone',
+        label: 'mobile devices'
+      },
+      {
+        icon: 'mdi-account-group',
+        label: 'all devices'
+      },
+      {
+        icon: 'mdi-settings',
+        label: 'app settings'
+      },
+      {
+        icon: 'mdi-chart-areaspline-variant',
+        label: 'app statistics'
+      },
+      {
+        icon: 'mdi-twitter',
+        label: 'tweet'
+      }
+    ]
   }),
   computed: {
     chartLabels() {

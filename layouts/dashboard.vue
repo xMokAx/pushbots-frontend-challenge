@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" light app temporary>
       <div class="pa-4 d-flex justify-space-between">
         <Logo class="logo" />
-        <v-btn icon @click.stop="toggleDrawer">
+        <v-btn icon aria-label="close side nav" @click.stop="toggleDrawer">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
       </div>
@@ -27,14 +27,18 @@
     </v-navigation-drawer>
     <div>
       <v-app-bar color="primary" dark>
-        <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon
+          aria-label="open side nav"
+          @click.stop="toggleDrawer"
+        ></v-app-bar-nav-icon>
 
         <v-toolbar-title class="d-none d-md-block"><SecLogo /></v-toolbar-title>
         <v-text-field
           type="text"
           prepend-inner-icon="mdi-magnify"
           background-color="teal"
-          placeholder="Search your app"
+          aria-label="Search apps"
+          placeholder="Search apps"
           dense
           solo
           flat
@@ -80,7 +84,7 @@
         </v-avatar>
         <v-menu left bottom>
           <template v-slot:activator="{ on }">
-            <v-btn icon v-on="on">
+            <v-btn aria-label="open menu" icon v-on="on">
               <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
           </template>
