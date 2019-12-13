@@ -15,50 +15,16 @@
         <h2 class="font-weight-regular title">Testimonials</h2>
       </v-card>
     </section>
+
     <section
       class="white flex-grow-1 flex-shrink-0 width-md-half d-flex flex-column justify-center align-center form-wrapper px-7 py-md-4 px-md-6 elevation-4"
     >
       <v-card elevation="0" width="100%" max-width="500">
         <h2 class="font-weight-regular headline mb-4">Log into your account</h2>
-        <v-form
-          ref="form"
-          v-model="valid"
-          lazy-validation
-          class="d-flex flex-column"
-          @submit.prevent="onSubmit"
-        >
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            name="email"
-            required
-          ></v-text-field>
-
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            label="Password"
-            name="password"
-            type="password"
-            required
-          ></v-text-field>
-          <nuxt-link to="/register" class="body-2 font-weight-bold"
-            >Don't have an account?</nuxt-link
-          >
-          <nuxt-link to="/reset-pw" class="body-2 font-weight-bold"
-            >Forgot your password?</nuxt-link
-          >
-          <v-btn
-            :disabled="!valid || !email || !password"
-            type="submit"
-            color="accent"
-            block
-            class="my-4"
-          >
-            LOGIN
-          </v-btn>
-        </v-form>
+        <LoginForm
+          :loading="isLoading"
+          @toggle-loading="isLoading = !isLoading"
+        />
         <div class="d-flex">
           <v-btn tile class="google-btn mr-2 white--text flex-grow-1">
             Google
@@ -69,15 +35,15 @@
         </div>
       </v-card>
     </section>
+
     <Loader :is-loading="isLoading" />
   </main>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import { SHOW_TOAST } from '../store/toast/mutation-types'
 import Logo from '../components/Logo'
 import Loader from '../components/Loader'
+import LoginForm from '../components/LoginForm'
 export default {
   auth: 'guest',
   head: {
@@ -85,48 +51,12 @@ export default {
   },
   components: {
     Logo,
-    Loader
+    Loader,
+    LoginForm
   },
   data: () => ({
-    valid: false,
-    email: '',
-    password: '',
-    emailRules: [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
-    ],
-    passwordRules: [
-      (v) => !!v || 'Password is required',
-      (v) => v.length > 4 || 'Password must be more than 4 characters'
-    ],
     isLoading: false
-  }),
-  methods: {
-    onSubmit() {
-      this.isLoading = true
-      this.$auth
-        .loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password
-          }
-        })
-        .then(() => {
-          this[SHOW_TOAST]({
-            color: 'success',
-            text: `Welcome back ${this.$auth.user.name}`
-          })
-        })
-        .catch((e) => {
-          this[SHOW_TOAST]({
-            color: 'error',
-            text: 'Email or password is wrong'
-          })
-          this.isLoading = false
-        })
-    },
-    ...mapMutations('toast', [SHOW_TOAST])
-  }
+  })
 }
 </script>
 
