@@ -45,13 +45,45 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // https://auth.nuxtjs.org/guide/setup.html
+    '@nuxtjs/auth',
     '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'https://pushbots-fend-challenge.herokuapp.com'
+  },
+  /*
+   ** Auth module configuration
+   ** See https://auth.nuxtjs.org/api/options.html
+   */
+  auth: {
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/dashboard'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: false,
+          user: { url: '/api/me', method: 'get', propertyName: false }
+        }
+      }
+    }
+  },
+  router: {
+    middleware: ['auth']
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -59,19 +91,28 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+        light: {
+          primary: colors.teal.darken2,
+          accent: colors.teal.darken4
         }
       }
     }
+  },
+  pwa: {
+    meta: {
+      ogHost: process.env.BASE_URL || 'http://localhost:3000',
+      ogImage: {
+        path: '/og-image',
+        width: '1200',
+        height: '630',
+        type: 'image/png'
+      },
+      nativeUI: true
+    }
+  },
+  env: {
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
   },
   /*
    ** Build configuration
