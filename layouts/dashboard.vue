@@ -9,6 +9,7 @@
       </div>
 
       <v-divider></v-divider>
+
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -25,6 +26,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <div>
       <v-app-bar color="primary" dark>
         <v-app-bar-nav-icon
@@ -32,7 +34,10 @@
           @click.stop="toggleDrawer"
         ></v-app-bar-nav-icon>
 
-        <v-toolbar-title class="d-none d-md-block"><SecLogo /></v-toolbar-title>
+        <v-toolbar-title class="d-none d-md-block">
+          <SecLogo />
+        </v-toolbar-title>
+
         <v-text-field
           type="text"
           prepend-inner-icon="mdi-magnify"
@@ -44,6 +49,7 @@
           flat
           hide-details
         />
+
         <v-spacer></v-spacer>
 
         <v-tooltip bottom>
@@ -79,9 +85,11 @@
             {{ user.plan }}
           </v-chip>
         </div>
+
         <v-avatar>
           <img :src="user.avatar" :alt="`${user.name}'s avatar'`" />
         </v-avatar>
+
         <v-menu left bottom>
           <template v-slot:activator="{ on }">
             <v-btn aria-label="open menu" icon v-on="on">
@@ -92,14 +100,12 @@
           <v-list dense>
             <v-list-item @click="() => {}">
               <v-list-item-title>
-                <v-icon left>mdi-settings</v-icon>
-                Account settings
+                <v-icon left>mdi-settings</v-icon>Account settings
               </v-list-item-title>
             </v-list-item>
             <v-list-item @click="logout">
               <v-list-item-title>
-                <v-icon left> mdi-logout-variant</v-icon>
-                Logout
+                <v-icon left>mdi-logout-variant</v-icon>Logout
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -127,7 +133,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: process.env.BASE_URL + this.$router.history.current.fullPath
+          content: process.env.BASE_URL + this.$route.fullPath
         }
       ]
     }
