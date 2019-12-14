@@ -57,10 +57,20 @@ const propsData = {
 }
 
 describe('AppCard', () => {
-  it('Should match snapshot', () => {
-    const wrapper = mount(AppCard, {
+  let wrapper
+  beforeEach(() => {
+    wrapper = mount(AppCard, {
       propsData
     })
+  })
+
+  it('Should match snapshot', () => {
     expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('Should render app data', () => {
+    const { title, totalUsers } = wrapper.vm.app
+    expect(wrapper.find('.v-card__title').text()).toBe(title)
+    expect(wrapper.find('.v-card__subtitle').text()).toBe(`${totalUsers} users`)
   })
 })
