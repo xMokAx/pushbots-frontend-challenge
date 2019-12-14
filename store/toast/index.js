@@ -29,8 +29,6 @@ export const mutations = {
   }
 }
 
-export const actions = {}
-
 export const getters = {
   toastOptions: (state) => state.toastOptions
 }

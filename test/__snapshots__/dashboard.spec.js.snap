@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Page Should match snapshot 1`] = `
+"<main class=\\"container flex-grow-1\\"><div class=\\"v-tabs pb-3 theme--light\\"><div role=\\"tablist\\" class=\\"v-item-group theme--light v-slide-group v-tabs-bar v-tabs-bar--is-mobile v-tabs-bar--show-arrows primary--text grey lighten-5\\"><div class=\\"v-slide-group__prev v-slide-group__prev--disabled\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate v-icon--disabled mdi mdi-chevron-left theme--light\\"></i></div><div class=\\"v-slide-group__wrapper\\"><div class=\\"v-slide-group__content v-tabs-bar__content\\"><div class=\\"v-tabs-slider-wrapper\\" style=\\"transition: none;\\"><div class=\\"v-tabs-slider\\"></div></div> <button tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"tab\\" class=\\"v-tab v-tab--active\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-check theme--light\\"></i>
+      complete
+    </button><button tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"tab\\" class=\\"v-tab\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-settings theme--light\\"></i>
+      in setup
+    </button><button tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"tab\\" class=\\"v-tab\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-share theme--light\\"></i>
+      shared
+    </button><button tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"tab\\" class=\\"v-tab\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-chart-bar theme--light\\"></i>
+      active
+    </button></div></div></div></div> <div class=\\"row\\"></div> <ul class=\\"py-4 px-4 v-pagination theme--light\\" page=\\"1\\"><li><button type=\\"button\\" class=\\"v-pagination__navigation v-pagination__navigation--disabled\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-chevron-left theme--light\\"></i></button></li><li><button type=\\"button\\" class=\\"v-pagination__navigation v-pagination__navigation--disabled\\"><i aria-hidden=\\"true\\" class=\\"v-icon notranslate mdi mdi-chevron-right theme--light\\"></i></button></li></ul> <div class=\\"v-overlay theme--dark\\" style=\\"z-index: 5;\\"><div class=\\"v-overlay__scrim\\" style=\\"opacity: 0; background-color: rgba(255, 255, 255, 0.7);\\"></div></div></main>"
+`;

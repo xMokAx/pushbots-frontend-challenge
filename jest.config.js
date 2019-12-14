@@ -12,7 +12,8 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
-    '<rootDir>/pages/**/*.vue',
-    '<rootDir>/layouts/**/*.vue'
-  ]
+    '<rootDir>/pages/**/*.vue'
+  ],
+  // mock the canvas as it's used by chart.js and make the tests fail
+  setupFiles: ['jest-canvas-mock']
 }
